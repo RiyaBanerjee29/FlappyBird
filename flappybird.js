@@ -71,6 +71,8 @@ window.onload = function ()
     requestAnimationFrame(update);
     setInterval(placePipe,1500);
     document.addEventListener("keydown",moveBird);
+    document.addEventListener("touchstart",moveBirdInPhone);
+
 
 }
 function update()
@@ -163,6 +165,20 @@ function moveBird(e)
 {
     if(e.code=="Space" || e.code=="ArrowUp" || e.code=="KeyX")
       velocityY=-6;
+    
+      //to restart the game
+      if(gameOver)
+      {
+        gameOver=false;
+        pipeArray=[];
+        score=0;
+        bird.y=birdY;
+      }
+}
+
+function moveBirdInPhone(e)
+{
+    velocityY=-6;
     
       //to restart the game
       if(gameOver)
